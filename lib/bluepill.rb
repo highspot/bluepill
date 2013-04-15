@@ -3,9 +3,9 @@ require 'rubygems'
 
 require 'bundler/setup' if ENV['BUNDLE_GEMFILE'] && File.exists?(ENV['BUNDLE_GEMFILE'])
 
+require 'syslog' unless RUBY_PLATFORM =~ /win32/
 require 'thread'
 require 'monitor'
-require 'syslog'
 require 'timeout'
 require 'logger'
 
