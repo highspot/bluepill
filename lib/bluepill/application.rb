@@ -169,8 +169,10 @@ module Bluepill
       Signal.trap("TERM", &terminator)
       Signal.trap("INT", &terminator)
 
-      Signal.trap("HUP") do
-        self.logger.reopen if self.logger
+      unless RUBY_PLATFORM =~ /mingw32/
+        Signal.trap("HUP") do
+          self.logger.reopen if self.logger
+        end
       end
     end
 
